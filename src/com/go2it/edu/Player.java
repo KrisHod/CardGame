@@ -1,25 +1,22 @@
 package com.go2it.edu;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
 
 public class Player {
-    private String name;
-    private List<Card> playerCards =new ArrayList();
+    private int id;
+    private List<Card> playerCards;
 
-    public Player() {
-        name = enterName();
-        playerCards = getFirst6Cards();
+    public Player(int id, List<Card> playerCards) {
+        this.id = id;
+        this.playerCards = playerCards;
     }
 
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public List<Card> getPlayerCards() {
@@ -33,25 +30,8 @@ public class Player {
     @Override
     public String toString() {
         return "Player{" +
-                "name='" + name + '\'' +
+                "id=" + id +
                 ", playerCards=" + playerCards +
                 '}';
     }
-
-    public String enterName() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter your name");
-        setName(input.next());
-        return name;
-    }
-
-    public List<Card> getFirst6Cards (){
-        for (int i = 0; i < 6; i++) {
-            playerCards.add(Card.getDeck()[new Random().nextInt(36)]);
-        }
-        return playerCards;
-    }
-
-
-
 }
