@@ -18,7 +18,6 @@ public class Deck {
         this.numCards = numCards;
     }
 
-    //Deck deck = new Deck(36);
 
 
 }
