@@ -15,7 +15,7 @@ public class GameService {
         return input.nextInt();
     }
 
-    public static List<Card> fillDeck(Deck deck) {
+    public static void fillDeck(Deck deck) {
         int i = 0;
         for (Suit s : Suit.values()) {
             for (Rank r : Rank.values()) {
@@ -25,7 +25,6 @@ public class GameService {
                 i++;
             }
         }
-        return cardArray;
     }
 
     public static int getRandomNumber(int bound) {
@@ -41,11 +40,10 @@ public class GameService {
         Collections.shuffle(cardArray);
     }
 
-    public static List<Player> fillListPlayer() {
+    public static void fillListPlayer() {
         for (int i = 0; i < numberOfPlayers; i++) {
             playerArray.add(new Player(i + 1, distributeCards()));
         }
-        return playerArray;
     }
 
 
@@ -103,7 +101,7 @@ public class GameService {
         return card;
     }
 
-    public static List<Card> coverCard() {
+    public static void coverCard() {
         Card cardToCover = playWithCard();
         Suit suitOfCardToCover = cardToCover.getSuit();
         int weightOfCardToCover = cardToCover.getRank().getWeight();
@@ -126,7 +124,7 @@ public class GameService {
                     }
                     takeCardFromDeck();
                     hasNoCards();
-                    return currentPlayerCards;
+                    return;
                 }
             }
         } else {
@@ -143,7 +141,7 @@ public class GameService {
                     }
                     takeCardFromDeck();
                     hasNoCards();
-                    return currentPlayerCards;
+                    return;
                 }
             }
             for (int i = 0; i < currentPlayerCards.size(); i++) { //looking for a trump
@@ -158,14 +156,13 @@ public class GameService {
                     }
                     takeCardFromDeck();
                     hasNoCards();
-                    return currentPlayerCards;
+                    return;
                 }
             }
         }
         currentPlayerCards.add(cardToCover);
         System.out.println("Player takes the card");
         passTurn();
-        return currentPlayerCards;
     }
 
     public static void playGame() {
