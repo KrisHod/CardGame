@@ -27,6 +27,10 @@ public class Player {
         this.playerCards = playerCards;
     }
 
+    public void removeCardFromPlayerCards(Card card){
+        playerCards.remove(card);
+    }
+
     @Override
     public String toString() {
         return "Player id=" + id +

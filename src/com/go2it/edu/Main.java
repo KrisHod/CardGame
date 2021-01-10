@@ -10,19 +10,21 @@ public class Main {
         System.out.println(deck);
         System.out.println();
         gameService.fillListPlayer(deck);
-        System.out.println(players);
+        System.out.println(gameService.players);
         System.out.println();
-        gameService.takeCardFromDeck(deck);
-        System.out.println(players);
+
+        System.out.println(gameService.players);
         System.out.println();
         System.out.println(deck);
 
         System.out.println(gameService.trump);
 
-        System.out.println(gameService.getTheLowestTrumpCard(players.get(0).getPlayerCards()));
-        System.out.println(gameService.getTheLowestTrumpCard(players.get(1).getPlayerCards()));
+        System.out.println(gameService.getTheLowestTrumpCard(gameService.players.get(0).getPlayerCards()));
+        System.out.println(gameService.getTheLowestTrumpCard(gameService.players.get(1).getPlayerCards()));
 
-        System.out.println(gameService.searchIdOfPlayerWithLowestTrump());
+        System.out.println(gameService.searchIndexOfPlayerWithLowestTrump());
+
+        System.out.println(gameService.attackWithCard());
 
     }
 }

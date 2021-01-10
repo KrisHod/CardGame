@@ -4,12 +4,12 @@ import java.util.*;
 
 public class GameService {
 
-    public static List<Player> players = new ArrayList<>();
-    public static int numberOfPlayers = getNumberOfPlayers();
-    public static int indexOfCurrentPlayer = 0;
+    public List<Player> players = new ArrayList<>();
+    public int numberOfPlayers = getNumberOfPlayers();
+    public int indexOfCurrentPlayer = searchIndexOfPlayerWithLowestTrump ();
     public Suit trump = chooseTrumpCard();
 
-    public static int getNumberOfPlayers() {
+    public int getNumberOfPlayers() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter number of players");
         return input.nextInt();
@@ -46,7 +46,7 @@ public class GameService {
         return localPlayerCards;
     }
 
-    public static void passTurn() {
+    public void passTurn() {
         indexOfCurrentPlayer = indexOfCurrentPlayer < numberOfPlayers - 1 ? indexOfCurrentPlayer++ : 0;
         System.out.println();
         System.out.println("Turn of player " + players.get(indexOfCurrentPlayer).getId());
@@ -80,7 +80,7 @@ public class GameService {
         return lowestTrumpCard;
     }
 
-    public int searchIdOfPlayerWithLowestTrump (){
+    public int searchIndexOfPlayerWithLowestTrump (){
         Set<Card> cardsOfAllPlayers = new HashSet<>();
         for (Player player: players) {
             cardsOfAllPlayers.addAll(player.getPlayerCards());
@@ -90,29 +90,23 @@ public class GameService {
         System.out.println("lowest" + lowestTrumpCard);
         for (Player player: players) {
             if (player.getPlayerCards().contains(lowestTrumpCard)) {
-                return player.getId();
+                return players.indexOf(player);
             }
         }
         return 0;
     }
-//
-//    public static Card playWithCard() {
-//        List<Card> currentPlayerCards = players.get(indexOfCurrentPlayer).getPlayerCards();
-//        Card card = currentPlayerCards.get(0);
-//        Iterator<Card> iterator = currentPlayerCards.iterator();
-//
-//        System.out.println("Player number " + players.get(indexOfCurrentPlayer).getId() + " play with " + card);
-//
-//        iterator.next();
-//        iterator.remove();
-//
-//        takeCardFromDeck();
-//        hasNoCards();
-//        return card;
-//    }
+
+    public Card attackWithCard() {
+        Set<Card> currentPlayerCards = players.get(indexOfCurrentPlayer).getPlayerCards();
+        Card card = getNextCard(currentPlayerCards);
+        System.out.println("Player number " + players.get(indexOfCurrentPlayer).getId() + " play with " + card);
+        players.get(indexOfCurrentPlayer).removeCardFromPlayerCards(card);
+        System.out.println(players.get(indexOfCurrentPlayer));
+        return card;
+    }
 //
 //    public static void coverCard() {
-//        Card cardToCover = playWithCard();
+//        Card cardToCover = ();
 //        Suit suitOfCardToCover = cardToCover.getSuit();
 //        int weightOfCardToCover = cardToCover.getRank().getWeight();
 //
