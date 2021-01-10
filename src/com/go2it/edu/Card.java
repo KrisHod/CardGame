@@ -1,7 +1,6 @@
 package com.go2it.edu;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class Card {
     private Suit suit;
@@ -26,6 +25,19 @@ public class Card {
 
     public void setRank(Rank rank) {
         this.rank = rank;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Card)) return false;
+        Card card = (Card) o;
+        return getSuit() == card.getSuit() && getRank() == card.getRank();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSuit(), getRank());
     }
 
     @Override

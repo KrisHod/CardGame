@@ -1,12 +1,12 @@
 package com.go2it.edu;
 
-import java.util.List;
+import java.util.Set;
 
 public class Player {
     private int id;
-    private List<Card> playerCards;
+    private Set playerCards;
 
-    public Player(int id, List<Card> playerCards) {
+    public Player(int id, Set playerCards) {
         this.id = id;
         this.playerCards = playerCards;
     }
@@ -19,18 +19,17 @@ public class Player {
         this.id = id;
     }
 
-    public List<Card> getPlayerCards() {
+    public Set getPlayerCards() {
         return playerCards;
     }
 
-    public void setPlayerCards(List<Card> playerCards) {
+    public void setPlayerCards(Set playerCards) {
         this.playerCards = playerCards;
     }
 
     @Override
     public String toString() {
-        return "Player{" +
-                "id=" + id +
+        return "Player id=" + id +
                 ", playerCards=" + playerCards +
                 '}';
     }
