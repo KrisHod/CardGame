@@ -1,5 +1,6 @@
 package com.go2it.edu;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class Player {
@@ -29,6 +30,19 @@ public class Player {
 
     public void removeCardFromPlayerCards(Card card){
         playerCards.remove(card);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Player)) return false;
+        Player player = (Player) o;
+        return getId() == player.getId() && Objects.equals(getPlayerCards(), player.getPlayerCards());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getPlayerCards());
     }
 
     @Override

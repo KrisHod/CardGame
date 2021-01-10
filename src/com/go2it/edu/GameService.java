@@ -104,70 +104,68 @@ public class GameService {
         System.out.println(players.get(indexOfCurrentPlayer));
         return card;
     }
-//
-//    public static void coverCard() {
-//        Card cardToCover = ();
-//        Suit suitOfCardToCover = cardToCover.getSuit();
-//        int weightOfCardToCover = cardToCover.getRank().getWeight();
-//
-//        passTurn();
-//
-//        List<Card> currentPlayerCards = players.get(indexOfCurrentPlayer).getPlayerCards();
-//        ListIterator<Card> iterator = currentPlayerCards.listIterator();
-//
-//        if (suitOfCardToCover.equals(trump)) {
-//            for (int i = 0; i < currentPlayerCards.size(); i++) {
-//                if (weightOfCardToCover < currentPlayerCards.get(i).getRank().getWeight() && currentPlayerCards.get(i).getSuit().equals(trump)) {
-//                    System.out.println("Player cover trump card with " + currentPlayerCards.get(i));
-//
-//                    while (iterator.hasNext()){
-//                        if(currentPlayerCards.indexOf(iterator.next()) == i){
-//                            iterator.remove();
-//                            break;
-//                        }
-//                    }
-//                    takeCardFromDeck();
-//                    hasNoCards();
-//                    return;
-//                }
-//            }
-//        } else {
-//            for (int i = 0; i < currentPlayerCards.size(); i++) { //looking for a bigger card of the same suit
-//                if (suitOfCardToCover.equals(currentPlayerCards.get(i).getSuit())
-//                        && weightOfCardToCover < currentPlayerCards.get(i).getRank().getWeight()) {
-//                    System.out.println("Player cover card with " + currentPlayerCards.get(i));
-//
-//                    while (iterator.hasNext()){
-//                        if(currentPlayerCards.indexOf(iterator.next()) == i){
-//                            iterator.remove();
-//                            break;
-//                        }
-//                    }
-//                    takeCardFromDeck();
-//                    hasNoCards();
-//                    return;
-//                }
-//            }
-//            for (int i = 0; i < currentPlayerCards.size(); i++) { //looking for a trump
-//                if (currentPlayerCards.get(i).getSuit().equals(trump)) {
-//                    System.out.println("Player cover card with trump " + currentPlayerCards.get(i));
-//
-//                    while (iterator.hasNext()){
-//                        if(currentPlayerCards.indexOf(iterator.next()) == i){
-//                            iterator.remove();
-//                            break;
-//                        }
-//                    }
-//                    takeCardFromDeck();
-//                    hasNoCards();
-//                    return;
-//                }
-//            }
-//        }
-//        currentPlayerCards.add(cardToCover);
-//        System.out.println("Player takes the card");
-//        passTurn();
-//    }
+
+    public void coverCard(Card card) {
+        Suit suitOfCardToCover = card.getSuit();
+        int weightOfCardToCover = card.getRank().getWeight();
+
+
+        List<Card> currentPlayerCards = players.get(indexOfCurrentPlayer).getPlayerCards();
+        ListIterator<Card> iterator = currentPlayerCards.listIterator();
+
+        if (suitOfCardToCover.equals(trump)) {
+            for (int i = 0; i < currentPlayerCards.size(); i++) {
+                if (weightOfCardToCover < currentPlayerCards.get(i).getRank().getWeight() && currentPlayerCards.get(i).getSuit().equals(trump)) {
+                    System.out.println("Player cover trump card with " + currentPlayerCards.get(i));
+
+                    while (iterator.hasNext()){
+                        if(currentPlayerCards.indexOf(iterator.next()) == i){
+                            iterator.remove();
+                            break;
+                        }
+                    }
+                    takeCardFromDeck();
+                    hasNoCards();
+                    return;
+                }
+            }
+        } else {
+            for (int i = 0; i < currentPlayerCards.size(); i++) { //looking for a bigger card of the same suit
+                if (suitOfCardToCover.equals(currentPlayerCards.get(i).getSuit())
+                        && weightOfCardToCover < currentPlayerCards.get(i).getRank().getWeight()) {
+                    System.out.println("Player cover card with " + currentPlayerCards.get(i));
+
+                    while (iterator.hasNext()){
+                        if(currentPlayerCards.indexOf(iterator.next()) == i){
+                            iterator.remove();
+                            break;
+                        }
+                    }
+                    takeCardFromDeck();
+                    hasNoCards();
+                    return;
+                }
+            }
+            for (int i = 0; i < currentPlayerCards.size(); i++) { //looking for a trump
+                if (currentPlayerCards.get(i).getSuit().equals(trump)) {
+                    System.out.println("Player cover card with trump " + currentPlayerCards.get(i));
+
+                    while (iterator.hasNext()){
+                        if(currentPlayerCards.indexOf(iterator.next()) == i){
+                            iterator.remove();
+                            break;
+                        }
+                    }
+                    takeCardFromDeck();
+                    hasNoCards();
+                    return;
+                }
+            }
+        }
+        currentPlayerCards.add(cardToCover);
+        System.out.println("Player takes the card");
+        passTurn();
+    }
 //
 //    public static void playGame() {
 //        System.out.println("Trump is " + trump);
