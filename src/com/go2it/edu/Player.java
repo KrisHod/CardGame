@@ -5,9 +5,9 @@ import java.util.Set;
 
 public class Player {
     private int id;
-    private Set playerCards;
+    private Set<Card> playerCards;
 
-    public Player(int id, Set playerCards) {
+    public Player(int id, Set<Card> playerCards) {
         this.id = id;
         this.playerCards = playerCards;
     }
@@ -20,15 +20,15 @@ public class Player {
         this.id = id;
     }
 
-    public Set getPlayerCards() {
+    public Set<Card> getPlayerCards() {
         return playerCards;
     }
 
-    public void setPlayerCards(Set playerCards) {
+    public void setPlayerCards(Set<Card> playerCards) {
         this.playerCards = playerCards;
     }
 
-    public void removeCardFromPlayerCards(Card card){
+    public void removeCardFromPlayerCards(Card card) {
         playerCards.remove(card);
     }
 
