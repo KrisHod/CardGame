@@ -118,7 +118,7 @@ public class GameService {
         return 0;
     }
 
-    public void attackAndCoverIfPossible() {
+    public boolean attackAndCover() {
         Card cardToCover = getNextCard(getCurrentPlayerCards());
         System.out.println("Player " + players.get(indexOfCurrentPlayer).getId() + " play with " + cardToCover);
         players.get(indexOfCurrentPlayer).removeCardFromPlayerCards(cardToCover);
@@ -130,6 +130,9 @@ public class GameService {
             getCurrentPlayerCards().add(cardToCover);
             System.out.println("Player " + players.get(indexOfCurrentPlayer).getId() + " takes " + cardToCover);
             passTurn();
+            return false;
+        } else{
+            return true;
         }
     }
 
@@ -178,7 +181,7 @@ public class GameService {
         indexOfCurrentPlayer = searchIndexOfPlayerWithLowestTrump();
         System.out.println("Player " + players.get(indexOfCurrentPlayer).getId() + " attack first");
         while (hasCards()) {
-            attackAndCoverIfPossible();
+            attackAndCover();
             takeCardFromDeck(deck);
         }
     }
