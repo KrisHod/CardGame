@@ -178,7 +178,6 @@ public class GameService {
         return res;
     }
 
-
     public void playGame() {
         Deck deck = new Deck(36);
         fillListPlayer(deck);
