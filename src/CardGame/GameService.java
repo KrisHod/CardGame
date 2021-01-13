@@ -50,6 +50,10 @@ public class GameService {
         return (Set<Card>) players.get(indexOfCurrentPlayer).getPlayerCards();
     }
 
+    public void addCardToPlayerCards (Card card){
+        getCurrentPlayerCards().add(card);
+    }
+
     public void passTurn() {
         if (indexOfCurrentPlayer < numberOfPlayers - 1) {
             indexOfCurrentPlayer++;
@@ -127,7 +131,7 @@ public class GameService {
 
         //if player cannot defend, he takes the card
         if (!(ifCardCanBeCoveredWithSameSuit(cardToCover) || hasTrumpToCover(cardToCover))) { //if player cannot defend, he takes the card
-            getCurrentPlayerCards().add(cardToCover);
+            addCardToPlayerCards(cardToCover);
             System.out.println("Player " + players.get(indexOfCurrentPlayer).getId() + " takes " + cardToCover);
             passTurn();
             return false;
