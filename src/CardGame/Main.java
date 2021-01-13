@@ -1,4 +1,4 @@
-package com.go2it.edu;
+package CardGame;
 
 public class Main {
     public static void main(String[] args) {

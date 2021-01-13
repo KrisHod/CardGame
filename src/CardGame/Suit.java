@@ -1,4 +1,4 @@
-package com.go2it.edu;
+package CardGame;
 
 public enum Suit {
     CLUBS, DIAMONDS, HEARTS, SPADES;

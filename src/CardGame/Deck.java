@@ -1,4 +1,4 @@
-package com.go2it.edu;
+package CardGame;
 
 import java.util.*;
 

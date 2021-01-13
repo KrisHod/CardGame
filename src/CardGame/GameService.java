@@ -1,4 +1,4 @@
-package com.go2it.edu;
+package CardGame;
 
 import java.util.*;
 
@@ -157,14 +157,7 @@ public class GameService {
     public boolean hasTrumpToCover(Card card) {
         boolean res = false;
         if (card.getSuit().equals(trump)) {
-            for (Card cardFromSet : getCurrentPlayerCards()) {
-                if (card.getRank().getWeight() < cardFromSet.getRank().getWeight() && cardFromSet.getSuit().equals(trump)) {
-                    System.out.println("Player cover trump card with " + cardFromSet);
-                    players.get(indexOfCurrentPlayer).removeCardFromPlayerCards(cardFromSet);
-                    res = true;
-                    break;
-                }
-            }
+            ifCardCanBeCoveredWithSameSuit(card);
         } else {
             for (Card cardFromSet : getCurrentPlayerCards()) {
                 if (cardFromSet.getSuit().equals(trump)) {
